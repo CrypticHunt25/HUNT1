@@ -85,8 +85,6 @@
         <div id="error" class="error"></div>
         <button onclick="checkAnswer()">Submit</button>
     </div>
-
-    <script>
         function checkAnswer() {
             const answer = document.getElementById('answer').value.toLowerCase().replace(/\s+/g, '');
             const errorDiv = document.getElementById('error');
@@ -97,6 +95,39 @@
                 errorDiv.textContent = 'Incorrect answer! Please try again.';
             }
         }
+        <script>
+    // Disable Right Click
+    document.addEventListener('contextmenu', (event) => event.preventDefault());
+
+    // Disable F12 Key (Developer Tools)
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'F12' || (event.ctrlKey && event.shiftKey && event.key === 'I')) {
+            event.preventDefault();
+            alert('Developer tools are disabled.');
+        }
+    });
+
+    // Disable Ctrl+Shift+J / Ctrl+U (View Source)
+    document.addEventListener('keydown', (event) => {
+        if (
+            (event.ctrlKey && event.key === 'u') || 
+            (event.ctrlKey && event.shiftKey && (event.key === 'j' || event.key === 'c'))
+        ) {
+            event.preventDefault();
+            alert('This action is disabled.');
+        }
+    });
+
+    // Continuous Debugger Blocker
+    (function blockDebugger() {
+        setInterval(() => {
+            const devtools = /./;
+            devtools.toString = () => {
+                throw "DevTools blocked!";
+            };
+            console.log(devtools);
+        }, 1000);
+    })();
     </script>
 </body>
 </html>

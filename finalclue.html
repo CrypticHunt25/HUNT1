@@ -14,7 +14,7 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background: url('https://i.pinimg.com/236x/1f/ab/24/1fab240c35fe75ffe50890b32daf414f.jpg') no-repeat center center/cover;
+            background: url('https://i.pinimg.com/236x/cc/0b/b5/cc0bb518c459eee4a250865767a77a53.jpg') no-repeat center center/cover;
             color: white;
         }
         .card {
@@ -60,16 +60,9 @@
         .card button:hover {
             background: linear-gradient(45deg, #ff5722, #ffc107);
         }
-        .success {
-            color: #4caf50;
-            font-size: 18px;
-            margin-top: 15px;
-        }
-        .congrats-link {
-            text-decoration: none;
-            color: #ffc107;
-            font-weight: bold;
-            font-size: 20px;
+        .error {
+            color: #f54242;
+            font-size: 16px;
         }
     </style>
 </head>
@@ -83,63 +76,54 @@ To win the prize, where all paths meet.
 It's the cup we cherish, the pride we defend,
 The name of the event-what's the legend?"</p>
         <input type="text" id="answer" placeholder="Enter your answer">
-        <div id="feedback"></div>
+        <div id="feedback" class="error"></div>
         <button onclick="checkAnswer()">Submit Answer</button>
-        <p id="success" class="success" style="display: none;">Well done, wizard! Proceed to the final congratulatory site:</p>
-        <a id="congrats-link" class="congrats-link" href="https://CrypticHunt25.github.io/HUNT/congrats.html" target="_blank" style="display: none;">Go to Congratulations Page</a>
     </div>
 
     <script>
         function checkAnswer() {
             const answer = document.getElementById('answer').value.toLowerCase().trim();
             const feedback = document.getElementById('feedback');
-            const successMessage = document.getElementById('success');
-            const congratsLink = document.getElementById('congrats-link');
 
             if (answer === 'vishwakarandak') {
-                feedback.textContent = '';
-                successMessage.style.display = 'block';
-                congratsLink.style.display = 'block'; // Fixed from 'inline' to 'block'
+                window.location.href = "https://CrypticHunt25.github.io/HUNT/congrats.html"; // Redirect to the congrats page
             } else {
                 feedback.textContent = 'Incorrect answer! Please try again.';
-                feedback.style.color = '#f54242';
-                successMessage.style.display = 'none';
-                congratsLink.style.display = 'none';
             }
         }
 
-    // Disable Right Click
-    document.addEventListener('contextmenu', (event) => event.preventDefault());
+        // Disable Right Click
+        document.addEventListener('contextmenu', (event) => event.preventDefault());
 
-    // Disable F12 Key (Developer Tools)
-    document.addEventListener('keydown', (event) => {
-        if (event.key === 'F12' || (event.ctrlKey && event.shiftKey && event.key === 'I')) {
-            event.preventDefault();
-            alert('Developer tools are disabled.');
-        }
-    });
+        // Disable F12 Key (Developer Tools)
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'F12' || (event.ctrlKey && event.shiftKey && event.key === 'I')) {
+                event.preventDefault();
+                alert('Developer tools are disabled.');
+            }
+        });
 
-    // Disable Ctrl+Shift+J / Ctrl+U (View Source)
-    document.addEventListener('keydown', (event) => {
-        if (
-            (event.ctrlKey && event.key === 'u') || 
-            (event.ctrlKey && event.shiftKey && (event.key === 'j' || event.key === 'c'))
-        ) {
-            event.preventDefault();
-            alert('This action is disabled.');
-        }
-    });
+        // Disable Ctrl+Shift+J / Ctrl+U (View Source)
+        document.addEventListener('keydown', (event) => {
+            if (
+                (event.ctrlKey && event.key === 'u') || 
+                (event.ctrlKey && event.shiftKey && (event.key === 'j' || event.key === 'c'))
+            ) {
+                event.preventDefault();
+                alert('This action is disabled.');
+            }
+        });
 
-    // Continuous Debugger Blocker
-    (function blockDebugger() {
-        setInterval(() => {
-            const devtools = /./;
-            devtools.toString = () => {
-                throw "DevTools blocked!";
-            };
-            console.log(devtools);
-        }, 1000);
-    })(); 
+        // Continuous Debugger Blocker
+        (function blockDebugger() {
+            setInterval(() => {
+                const devtools = /./;
+                devtools.toString = () => {
+                    throw "DevTools blocked!";
+                };
+                console.log(devtools);
+            }, 1000);
+        })(); 
     </script>
 </body>
 </html>

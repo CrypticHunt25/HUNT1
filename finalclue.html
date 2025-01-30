@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unlock the Final Clue</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: url('https://images.unsplash.com/photo-1528209330545-4b1ec2f0159c') no-repeat center center/cover;
+            color: white;
+        }
+        .card {
+            background: rgba(0, 0, 0, 0.85);
+            color: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            max-width: 600px;
+            backdrop-filter: blur(10px);
+        }
+        .card h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            font-family: 'Cursive', serif;
+            color: #ffc107;
+        }
+        .card p {
+            font-size: 20px;
+            margin-bottom: 25px;
+            color: #f1c40f;
+        }
+        .card input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 2px solid #6c757d;
+            border-radius: 5px;
+            background: #f8f9fa;
+        }
+        .card button {
+            background: linear-gradient(45deg, #ffc107, #ff5722);
+            color: white;
+            border: none;
+            padding: 12px;
+            width: 100%;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        .card button:hover {
+            background: linear-gradient(45deg, #ff5722, #ffc107);
+        }
+        .error {
+            color: #f54242;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Unlock the Final Clue</h1>
+        <p>"Enter the answer from the locked PDF to proceed."</p>
+        <input type="text" id="answer" placeholder="Enter your answer">
+        <div id="error" class="error"></div>
+        <button onclick="checkAnswer()">Submit</button>
+    </div>
+
+    <script>
+        function checkAnswer() {
+            const answer = document.getElementById('answer').value.toLowerCase().trim();
+            const errorDiv = document.getElementById('error');
+
+            if (answer === '25') { // Replace 'correct_answer' with the actual answer
+                window.location.href = 'final.html'; // Redirect to the Final Clue website
+            } else {
+                errorDiv.textContent = 'Incorrect answer! Please try again.';
+            }
+        }
+
+        // Disable Right Click
+        document.addEventListener('contextmenu', (event) => event.preventDefault());
+
+        // Disable F12 Key (Developer Tools)
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'F12' || (event.ctrlKey && event.shiftKey && event.key === 'I')) {
+                event.preventDefault();
+                alert('Developer tools are disabled.');
+            }
+        });
+
+        // Disable Ctrl+Shift+J / Ctrl+U (View Source)
+        document.addEventListener('keydown', (event) => {
+            if (
+                (event.ctrlKey && event.key === 'u') || 
+                (event.ctrlKey && event.shiftKey && (event.key === 'j' || event.key === 'c'))
+            ) {
+                event.preventDefault();
+                alert('This action is disabled.');
+            }
+        });
+    </script>
+</body>
+</html>

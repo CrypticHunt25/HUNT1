@@ -6,70 +6,61 @@
     <title>Congratulations!</title>
     <style>
         body {
+            font-family: 'Georgia', serif;
             margin: 0;
             padding: 0;
-            font-family: 'Georgia', serif;
-            background-image: url('https://i.imgur.com/2Cbx5Nk.jpg'); /* Hogwarts-themed background */
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            color: #f8f1d6;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: url('https://i.pinimg.com/236x/c5/8b/c2/c58bc268a7e603faef78f3f5e6295ba7.jpg') no-repeat center center/cover;
+            color: white;
             text-align: center;
         }
-        .container {
-            margin-top: 20%;
+        .card {
+            background: rgba(0, 0, 0, 0.85);
+            color: #f8f9fa;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            max-width: 600px;
+            backdrop-filter: blur(10px);
         }
-        h1 {
-            font-size: 3.5em;
-            text-shadow: 3px 3px 5px #000;
+        .card h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            font-family: 'Cursive', serif;
+            color: #ffc107;
         }
-        p {
-            font-size: 1.5em;
-            margin: 20px;
-            text-shadow: 2px 2px 4px #000;
+        .card p {
+            font-size: 20px;
+            margin-bottom: 25px;
+            color: #f1c40f;
+        }
+        .btn {
+            background: linear-gradient(45deg, #ffc107, #ff5722);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 16px;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+        }
+        .btn:hover {
+            background: linear-gradient(45deg, #ff5722, #ffc107);
         }
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="card">
         <h1>Congratulations, Wizard!</h1>
-        <p>You have successfully completed the cryptic hunt!</p>
-        <p>Hogwarts is proud of your magical intellect and courage. May your journey be filled with more adventures!</p>
+        <p>You have successfully completed the Cryptic Hunt. Your magical journey has proven your brilliance and determination!</p>
     </div>
-
-    <script>
-    // Disable Right Click
-    document.addEventListener('contextmenu', (event) => event.preventDefault());
-
-    // Disable F12 Key (Developer Tools)
-    document.addEventListener('keydown', (event) => {
-        if (event.key === 'F12' || (event.ctrlKey && event.shiftKey && event.key === 'I')) {
-            event.preventDefault();
-            alert('Developer tools are disabled.');
-        }
-    });
-
-    // Disable Ctrl+Shift+J / Ctrl+U (View Source)
-    document.addEventListener('keydown', (event) => {
-        if (
-            (event.ctrlKey && event.key === 'u') || 
-            (event.ctrlKey && event.shiftKey && (event.key === 'j' || event.key === 'c'))
-        ) {
-            event.preventDefault();
-            alert('This action is disabled.');
-        }
-    });
-
-    // Continuous Debugger Blocker
-    (function blockDebugger() {
-        setInterval(() => {
-            const devtools = /./;
-            devtools.toString = () => {
-                throw "DevTools blocked!";
-            };
-            console.log(devtools);
-        }, 1000);
-    })();
-</script>
 </body>
 </html>

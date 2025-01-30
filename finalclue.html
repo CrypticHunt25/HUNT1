@@ -99,7 +99,7 @@ The name of the event-what's the legend?"</p>
             if (answer === 'vishwakarandak') {
                 feedback.textContent = '';
                 successMessage.style.display = 'block';
-                congratsLink.style.display = 'inline';
+                congratsLink.style.display = 'block'; // Fixed from 'inline' to 'block'
             } else {
                 feedback.textContent = 'Incorrect answer! Please try again.';
                 feedback.style.color = '#f54242';

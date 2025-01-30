@@ -85,6 +85,8 @@
         <div id="error" class="error"></div>
         <button onclick="checkAnswer()">Submit</button>
     </div>
+
+    <script>
         function checkAnswer() {
             const answer = document.getElementById('answer').value.toLowerCase().replace(/\s+/g, '');
             const errorDiv = document.getElementById('error');
@@ -95,7 +97,7 @@
                 errorDiv.textContent = 'Incorrect answer! Please try again.';
             }
         }
-        <script>
+    </script>
     // Disable Right Click
     document.addEventListener('contextmenu', (event) => event.preventDefault());
 
@@ -128,6 +130,6 @@
     //         console.log(devtools);
     //     }, 1000);
     // })();
-    </script>
+    //</script>
 </body>
 </html>

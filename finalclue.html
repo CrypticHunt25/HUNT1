@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vishwakarandak Puzzle</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: url('https://images.unsplash.com/photo-1516375677171-1956b3ca7265') no-repeat center center/cover;
+            color: white;
+        }
+        .card {
+            background: rgba(0, 0, 0, 0.85);
+            color: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            max-width: 600px;
+            backdrop-filter: blur(10px);
+        }
+        .card h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            font-family: 'Cursive', serif;
+            color: #ffc107;
+        }
+        .card p {
+            font-size: 20px;
+            margin-bottom: 25px;
+            color: #f1c40f;
+        }
+        .card input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 2px solid #6c757d;
+            border-radius: 5px;
+            background: #f8f9fa;
+        }
+        .card button {
+            background: linear-gradient(45deg, #ffc107, #ff5722);
+            color: white;
+            border: none;
+            padding: 12px;
+            width: 100%;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        .card button:hover {
+            background: linear-gradient(45deg, #ff5722, #ffc107);
+        }
+        .success {
+            color: #4caf50;
+            font-size: 18px;
+            margin-top: 15px;
+        }
+        .congrats-link {
+            text-decoration: none;
+            color: #ffc107;
+            font-weight: bold;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Vishwakarandak Puzzle</h1>
+        <p>"I can be cracked, made, told, and played. What am I?"</p>
+        <input type="text" id="answer" placeholder="Enter your answer">
+        <div id="feedback"></div>
+        <button onclick="checkAnswer()">Submit Answer</button>
+        <p id="success" class="success" style="display: none;">Well done, wizard! Proceed to the final congratulatory site:</p>
+        <a id="congrats-link" class="congrats-link" href="https://yourusername.github.io/wizarding-hunt/congratulations.html" target="_blank" style="display: none;">Go to Congratulations Page</a>
+    </div>
+
+    <script>
+        function checkAnswer() {
+            const answer = document.getElementById('answer').value.toLowerCase().trim();
+            const feedback = document.getElementById('feedback');
+            const successMessage = document.getElementById('success');
+            const congratsLink = document.getElementById('congrats-link');
+
+            if (answer === 'a joke') {
+                feedback.textContent = '';
+                successMessage.style.display = 'block';
+                congratsLink.style.display = 'inline';
+            } else {
+                feedback.textContent = 'Incorrect answer! Please try again.';
+                feedback.style.color = '#f54242';
+                successMessage.style.display = 'none';
+                congratsLink.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>

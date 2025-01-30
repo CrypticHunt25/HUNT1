@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vishwakarandak Puzzle</title>
+    <title>Final Clue</title>
     <style>
         body {
             font-family: 'Georgia', serif;
@@ -75,8 +75,13 @@
 </head>
 <body>
     <div class="card">
-        <h1>Vishwakarandak Puzzle</h1>
-        <p>"I can be cracked, made, told, and played. What am I?"</p>
+        <h1>Final Clue</h1>
+        <p>"A war is waged not with swords alone,
+Departments rise to claim the throne.
+Through sports, arts, and brains, they compete,
+To win the prize, where all paths meet.
+It's the cup we cherish, the pride we defend,
+The name of the event-what's the legend?"</p>
         <input type="text" id="answer" placeholder="Enter your answer">
         <div id="feedback"></div>
         <button onclick="checkAnswer()">Submit Answer</button>
@@ -91,7 +96,7 @@
             const successMessage = document.getElementById('success');
             const congratsLink = document.getElementById('congrats-link');
 
-            if (answer === 'a joke') {
+            if (answer === 'Vishwakarandak') {
                 feedback.textContent = '';
                 successMessage.style.display = 'block';
                 congratsLink.style.display = 'inline';

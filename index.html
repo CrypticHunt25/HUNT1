@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wizarding World Cryptic Hunt</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: url('https://images.unsplash.com/photo-1509927084999-efc50405f255') no-repeat center center/cover;
+            color: white;
+        }
+        .card {
+            background: rgba(0, 0, 0, 0.8);
+            color: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            max-width: 500px;
+            backdrop-filter: blur(10px);
+        }
+        .card h1 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            font-family: 'Cursive', serif;
+        }
+        .card p {
+            margin-bottom: 20px;
+        }
+        .card input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 2px solid #6c757d;
+            border-radius: 5px;
+            background: #f8f9fa;
+        }
+        .card button {
+            background: linear-gradient(45deg, #ffc107, #ff5722);
+            color: white;
+            border: none;
+            padding: 12px;
+            width: 100%;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        .card button:hover {
+            background: linear-gradient(45deg, #ff5722, #ffc107);
+        }
+        .error {
+            color: #f54242;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        .chatbox {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 15px;
+            font-family: 'Courier New', Courier, monospace;
+            margin-top: 10px;
+        }
+        .chatbox span {
+            color: #ffc107;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Welcome to the Wizarding World Cryptic Hunt! 🪄</h1>
+        <p>Your journey begins here, brave wizard. Solve the riddles, crack the codes, and uncover the secrets of magic!</p>
+        <div class="chatbox">
+            <span>Hint:</span> "I'm where young witches and wizards convene,<br>Hidden in London, unseen and serene.<br>Through a solid wall, your journey you’ll mark,<br>Tell me the place to board to Hogwarts."
+        </div>
+        <input type="text" id="answer" placeholder="Enter your answer">
+        <div id="error" class="error"></div>
+        <button onclick="checkAnswer()">Submit</button>
+    </div>
+
+    <script>
+        function checkAnswer() {
+            const answer = document.getElementById('answer').value.toLowerCase().replace(/\s+/g, '');
+            const errorDiv = document.getElementById('error');
+
+            if (answer === 'platform9and3/4') {
+                window.location.href = 'image-numeric-puzzle.html'; // Redirect to the next page
+            } else {
+                errorDiv.textContent = 'Incorrect answer! Please try again.';
+            }
+        }
+    </script>
+</body>
+</html>

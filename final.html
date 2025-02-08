@@ -3,17 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unlock the Final Clue</title>
+    <title>Final Clue</title>
+    <script src="disable-inspect.js"></script>
     <style>
         body {
             font-family: 'Georgia', serif;
             margin: 0;
             padding: 0;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background: url('https://images.unsplash.com/photo-1528209330545-4b1ec2f0159c') no-repeat center center/cover;
+            background: url('https://i.pinimg.com/736x/55/8c/04/558c0456603210e34f1925683a2b7d27.jpg') no-repeat center center/cover;
             color: white;
         }
         .card {
@@ -62,28 +64,32 @@
         .error {
             color: #f54242;
             font-size: 16px;
-            margin-top: 10px;
         }
     </style>
 </head>
 <body>
     <div class="card">
-        <h1>Unlock the Final Clue</h1>
-        <p>"Enter the answer from the locked PDF to proceed."</p>
+        <h1>Final Clue</h1>
+        <p>"A war is waged not with swords alone,
+Departments rise to claim the throne.
+Through sports, arts, and brains, they compete,
+To win the prize, where all paths meet.
+It's the cup we cherish, the pride we defend,
+The name of the event-what's the legend?"</p>
         <input type="text" id="answer" placeholder="Enter your answer">
-        <div id="error" class="error"></div>
-        <button onclick="checkAnswer()">Submit</button>
+        <div id="feedback" class="error"></div>
+        <button onclick="checkAnswer()">Submit Answer</button>
     </div>
 
     <script>
         function checkAnswer() {
             const answer = document.getElementById('answer').value.toLowerCase().trim();
-            const errorDiv = document.getElementById('error');
+            const feedback = document.getElementById('feedback');
 
-            if (answer === '25') { // Replace 'correct_answer' with the actual answer
-                window.location.href = 'finalclue.html'; // Redirect to the Final Clue website
+            if (answer === 'vishwakarandak') {
+                window.location.href = "https://CrypticHunt25.github.io/HUNT1/congrats.html"; // Redirect to the congrats page
             } else {
-                errorDiv.textContent = 'Incorrect answer! Please try again.';
+                feedback.textContent = 'Incorrect answer! Please try again.';
             }
         }
 
@@ -108,6 +114,32 @@
                 alert('This action is disabled.');
             }
         });
+
+        // Continuous Debugger Blocker
+        (function blockDebugger() {
+            setInterval(() => {
+                const devtools = /./;
+                devtools.toString = () => {
+                    throw "DevTools blocked!";
+                };
+                console.log(devtools);
+            }, 1000);
+        })(); 
     </script>
+        <script>
+        window.onload = function () {
+            const startTime = localStorage.getItem('startTime');
+            const currentTime = new Date().getTime();
+            const elapsedTime = currentTime - startTime;
+
+            const seconds = Math.floor((elapsedTime / 1000) % 60);
+            const minutes = Math.floor((elapsedTime / (1000 * 60)) % 60);
+            const hours = Math.floor((elapsedTime / (1000 * 60 * 60)) % 24);
+
+            document.getElementById('final-time').textContent = 
+                `${hours}h ${minutes}m ${seconds}s`;
+        };
+    </script>
+
 </body>
 </html>

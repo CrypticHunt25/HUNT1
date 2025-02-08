@@ -3,109 +3,102 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wizarding Cryptic Hunt</title>
+    <title>Wizarding World Cryptic Hunt</title>
     <script src="disable-inspect.js"></script>
+    <script src="timer.js"></script>
     <style>
         body {
-            background-image: url('https://i.pinimg.com/736x/36/8c/fc/368cfcf467b36b58c4280c92e4beb99f.jpg'); /* Replace with your background image URL */
-            background-size: cover;
-            background-attachment: fixed;
-            color: #f1c40f; /* Golden text color */
             font-family: 'Georgia', serif;
-            text-align: center;
-            padding: 20px;
-        }
-        h1 {
-            font-size: 3em;
-            margin-top: 50px;
-            text-shadow: 2px 2px 8px #000;
-        }
-        p {
-            font-size: 1.5em;
-            text-shadow: 1px 1px 5px #000;
-        }
-        img {
-            width: 400px;
-            height: auto;
-            margin: 20px;
-            border: 5px solid #f1c40f;
-            border-radius: 10px;
-            box-shadow: 2px 2px 15px #000;
-        }
-        .files {
+            margin: 0;
+            padding: 0;
             display: flex;
             justify-content: center;
-            gap: 20px;
-            margin-top: 30px;
+            align-items: center;
+            height: 100vh;
+            background: url('https://i.pinimg.com/736x/89/eb/0b/89eb0bacc3f8302262be484475d6b2bb.jpg') no-repeat center center/cover;
+            color: white;
         }
-        .file {
-            background-color: #1a1a1d;
-            color: #f1c40f;
-            padding: 15px 20px;
-            text-decoration: none;
-            font-size: 1.2em;
+        .card {
+            background: rgba(0, 0, 0, 0.8);
+            color: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            max-width: 500px;
+            backdrop-filter: blur(10px);
+        }
+        .card h1 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            font-family: 'Cursive', serif;
+        }
+        .card p {
+            margin-bottom: 20px;
+        }
+        .card input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 2px solid #6c757d;
+            border-radius: 5px;
+            background: #f8f9fa;
+        }
+        .card button {
+            background: linear-gradient(45deg, #ffc107, #ff5722);
+            color: white;
+            border: none;
+            padding: 12px;
+            width: 100%;
+            border-radius: 25px;
+            cursor: pointer;
             font-weight: bold;
-            border-radius: 8px;
-            box-shadow: 2px 2px 10px #000;
-            transition: transform 0.2s, box-shadow 0.2s;
+            font-size: 16px;
         }
-        .file:hover {
-            transform: scale(1.1);
-            box-shadow: 3px 3px 15px #f1c40f;
+        .card button:hover {
+            background: linear-gradient(45deg, #ff5722, #ffc107);
+        }
+        .error {
+            color: #f54242;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        .chatbox {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 15px;
+            font-family: 'Courier New', Courier, monospace;
+            margin-top: 10px;
+        }
+        .chatbox span {
+            color: #ffc107;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
-    <h1>Welcome to the Wizarding Cryptic Hunt!</h1>
-    <p>Well done, wizard! You've discovered the Second Clue. Use it wisely to proceed to the next step. 
-       The image and the answer of the riddle below when combined is the passwored for the LOCKED FILE follwed by them.</p>
-    <img src="https://i.pinimg.com/736x/ca/2b/08/ca2b089a50a889081fea846e22fd53f7.jpg" alt="Clue"> <!-- Replace with your image URL -->
-    <p>The Riddle:
-        I am a four-digit number.
-        I am divisible by 5 and 10.
-        The sum of my digits is 2.
-        What number am I?
-    </p>
-    <p>Click <a href="locked1-protected.pdf" target="_blank" color:#ff0000; text-decoration: none;" >here</a> to download the final challenge PDF.</p>
-<!--     <div class="files">
-        <a class="file" href="broomstick_charm-file-url" download>Broomstick Charm</a> <!-- Replace with file URL -->
-<!--         <a class="file" href="wand_spellbook-file-url" download>Wand Spellbook</a> <!-- Replace with file URL -->
-<!--         <a class="file" href="golden_snitch_guide-file-url" download>Golden Snitch Guide</a> <!-- Replace with file URL -->
-    <!--</div> -->
+    <div class="card">
+        <h1>Welcome to the Wizarding World Cryptic Hunt! 🪄</h1>
+        <p>Your journey begins here, brave wizard. Solve the riddles, crack the codes, and uncover the secrets of magic!</p>
+        <div class="chatbox">
+            <span>Hint:</span> "I'm where young witches and wizards convene,<br>Hidden in London, unseen and serene.<br>Through a solid wall, your journey you’ll mark,<br>Tell me the place to board to Hogwarts."
+        </div>
+        <input type="text" id="answer" placeholder="Enter your answer">
+        <div id="error" class="error"></div>
+        <button onclick="checkAnswer()">Submit</button>
+    </div>
 
     <script>
-    // Disable Right Click
-    document.addEventListener('contextmenu', (event) => event.preventDefault());
+        function checkAnswer() {
+            const answer = document.getElementById('answer').value.toLowerCase().replace(/\s+/g, '');
+            const errorDiv = document.getElementById('error');
 
-    // Disable F12 Key (Developer Tools)
-    document.addEventListener('keydown', (event) => {
-        if (event.key === 'F12' || (event.ctrlKey && event.shiftKey && event.key === 'I')) {
-            event.preventDefault();
-            alert('Developer tools are disabled.');
+            if (answer === 'platform9and3/4') {
+                window.location.href = 'step2.html'; // Redirect to the next page
+            } else {
+                errorDiv.textContent = 'Incorrect answer! Please try again.';
+            }
         }
-    });
-
-    // Disable Ctrl+Shift+J / Ctrl+U (View Source)
-    document.addEventListener('keydown', (event) => {
-        if (
-            (event.ctrlKey && event.key === 'u') || 
-            (event.ctrlKey && event.shiftKey && (event.key === 'j' || event.key === 'c'))
-        ) {
-            event.preventDefault();
-            alert('This action is disabled.');
-        }
-    });
-
-    // Continuous Debugger Blocker
-    (function blockDebugger() {
-        setInterval(() => {
-            const devtools = /./;
-            devtools.toString = () => {
-                throw "DevTools blocked!";
-            };
-            console.log(devtools);
-        }, 1000);
-    })();
-</script>
+    </script>
 </body>
 </html>

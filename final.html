@@ -3,130 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Final Clue</title>
-    <script src="disable-inspect.js"></script>
+    <title>Wizarding World Cryptic Hunt - Final</title>
     <style>
         body {
             font-family: 'Georgia', serif;
             margin: 0;
             padding: 0;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
-            background: url('https://i.pinimg.com/736x/55/8c/04/558c0456603210e34f1925683a2b7d27.jpg') no-repeat center center/cover;
+            height: 100vh;
+            background: url('https://i.pinimg.com/736x/89/eb/0b/89eb0bacc3f8302262be484475d6b2bb.jpg') no-repeat center center/cover;
             color: white;
         }
         .card {
-            background: rgba(0, 0, 0, 0.85);
+            background: rgba(0, 0, 0, 0.8);
             color: #f8f9fa;
             padding: 30px;
             border-radius: 15px;
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
             text-align: center;
-            max-width: 600px;
+            max-width: 500px;
             backdrop-filter: blur(10px);
         }
         .card h1 {
-            font-size: 36px;
-            margin-bottom: 20px;
+            font-size: 28px;
+            margin-bottom: 15px;
             font-family: 'Cursive', serif;
-            color: #ffc107;
         }
         .card p {
-            font-size: 20px;
-            margin-bottom: 25px;
-            color: #f1c40f;
-        }
-        .card input {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 2px solid #6c757d;
-            border-radius: 5px;
-            background: #f8f9fa;
-        }
-        .card button {
-            background: linear-gradient(45deg, #ffc107, #ff5722);
-            color: white;
-            border: none;
-            padding: 12px;
-            width: 100%;
-            border-radius: 25px;
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 16px;
-        }
-        .card button:hover {
-            background: linear-gradient(45deg, #ff5722, #ffc107);
-        }
-        .error {
-            color: #f54242;
-            font-size: 16px;
+            margin-bottom: 20px;
         }
     </style>
 </head>
 <body>
     <div class="card">
-        <h1>Final Clue</h1>
-        <p>"A war is waged not with swords alone,
-Departments rise to claim the throne.
-Through sports, arts, and brains, they compete,
-To win the prize, where all paths meet.
-It's the cup we cherish, the pride we defend,
-The name of the event-what's the legend?"</p>
-        <input type="text" id="answer" placeholder="Enter your answer">
-        <div id="feedback" class="error"></div>
-        <button onclick="checkAnswer()">Submit Answer</button>
+        <h1>Congratulations, Wizard!</h1>
+        <p>Your final time is: <span id="final-time"></span></p>
     </div>
 
     <script>
-        function checkAnswer() {
-            const answer = document.getElementById('answer').value.toLowerCase().trim();
-            const feedback = document.getElementById('feedback');
-
-            if (answer === 'vishwakarandak') {
-                window.location.href = "https://CrypticHunt25.github.io/HUNT1/congrats.html"; // Redirect to the congrats page
-            } else {
-                feedback.textContent = 'Incorrect answer! Please try again.';
-            }
-        }
-
-        // Disable Right Click
-        document.addEventListener('contextmenu', (event) => event.preventDefault());
-
-        // Disable F12 Key (Developer Tools)
-        document.addEventListener('keydown', (event) => {
-            if (event.key === 'F12' || (event.ctrlKey && event.shiftKey && event.key === 'I')) {
-                event.preventDefault();
-                alert('Developer tools are disabled.');
-            }
-        });
-
-        // Disable Ctrl+Shift+J / Ctrl+U (View Source)
-        document.addEventListener('keydown', (event) => {
-            if (
-                (event.ctrlKey && event.key === 'u') || 
-                (event.ctrlKey && event.shiftKey && (event.key === 'j' || event.key === 'c'))
-            ) {
-                event.preventDefault();
-                alert('This action is disabled.');
-            }
-        });
-
-        // Continuous Debugger Blocker
-        (function blockDebugger() {
-            setInterval(() => {
-                const devtools = /./;
-                devtools.toString = () => {
-                    throw "DevTools blocked!";
-                };
-                console.log(devtools);
-            }, 1000);
-        })(); 
-    </script>
-        <script>
         window.onload = function () {
             const startTime = localStorage.getItem('startTime');
             const currentTime = new Date().getTime();
@@ -140,6 +56,5 @@ The name of the event-what's the legend?"</p>
                 `${hours}h ${minutes}m ${seconds}s`;
         };
     </script>
-
 </body>
 </html>

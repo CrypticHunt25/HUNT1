@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wizarding World Cryptic Hunt</title>
-    <script src="disable-inspect.js"></script>
-    <script src="timer.js"></script>
     <style>
         body {
             font-family: 'Georgia', serif;
@@ -15,7 +13,7 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background: url('https://i.pinimg.com/736x/89/eb/0b/89eb0bacc3f8302262be484475d6b2bb.jpg') no-repeat center center/cover;
+            background: url('https://images.unsplash.com/photo-1509927084999-efc50405f255') no-repeat center center/cover;
             color: white;
         }
         .card {
@@ -94,7 +92,7 @@
             const errorDiv = document.getElementById('error');
 
             if (answer === 'platform9and3/4') {
-                window.location.href = 'step2.html'; // Redirect to the next page
+                window.location.href = 'image-numeric-puzzle.html'; // Redirect to the next page
             } else {
                 errorDiv.textContent = 'Incorrect answer! Please try again.';
             }

@@ -126,5 +126,20 @@ The name of the event-what's the legend?"</p>
             }, 1000);
         })(); 
     </script>
+        <script>
+        window.onload = function () {
+            const startTime = localStorage.getItem('startTime');
+            const currentTime = new Date().getTime();
+            const elapsedTime = currentTime - startTime;
+
+            const seconds = Math.floor((elapsedTime / 1000) % 60);
+            const minutes = Math.floor((elapsedTime / (1000 * 60)) % 60);
+            const hours = Math.floor((elapsedTime / (1000 * 60 * 60)) % 24);
+
+            document.getElementById('final-time').textContent = 
+                `${hours}h ${minutes}m ${seconds}s`;
+        };
+    </script>
+
 </body>
 </html>

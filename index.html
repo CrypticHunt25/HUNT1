@@ -5,183 +5,96 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wizarding World Cryptic Hunt</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Raleway:wght@300&display=swap');
-
         body {
+            font-family: 'Georgia', serif;
             margin: 0;
             padding: 0;
-            font-family: 'Raleway', sans-serif;
-            background-image: url('https://upload.wikimedia.org/wikipedia/en/8/86/HogwartsCastelWinter.jpg');
-            background-size: cover;
-            background-attachment: fixed;
-            background-position: center;
-            color: #f8f1e5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: url('https://i.pinimg.com/736x/89/eb/0b/89eb0bacc3f8302262be484475d6b2bb.jpg') no-repeat center center/cover;
+            color: white;
         }
-
-        .container {
-            width: 90%;
-            max-width: 800px;
-            margin: 50px auto;
+        .card {
             background: rgba(0, 0, 0, 0.8);
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-            font-family: 'Cinzel', serif;
-        }
-
-        h1, h2 {
+            color: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
             text-align: center;
-            color: #ffc107;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+            max-width: 500px;
+            backdrop-filter: blur(10px);
         }
-
-        .puzzle {
+        .card h1 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            font-family: 'Cursive', serif;
+        }
+        .card p {
             margin-bottom: 20px;
         }
-
-        .puzzle img {
-            width: 100%;
-            max-width: 300px;
-            display: block;
-            margin: 10px auto;
-        }
-
-        .parchment {
-            background: url('https://i.imgur.com/CLJfxiY.png') no-repeat center center;
-            background-size: cover;
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 15px;
-        }
-
-        input[type="text"], button {
+        .card input {
             width: 100%;
             padding: 10px;
-            margin: 10px 0;
-            border: none;
+            margin-bottom: 15px;
+            border: 2px solid #6c757d;
             border-radius: 5px;
+            background: #f8f9fa;
+        }
+        .card button {
+            background: linear-gradient(45deg, #ffc107, #ff5722);
+            color: white;
+            border: none;
+            padding: 12px;
+            width: 100%;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
             font-size: 16px;
         }
-
-        input[type="text"] {
-            background: #222;
-            color: #fff;
+        .card button:hover {
+            background: linear-gradient(45deg, #ff5722, #ffc107);
         }
-
-        button {
-            background: #ffc107;
-            color: #000;
+        .error {
+            color: #f54242;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        .chatbox {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 15px;
+            font-family: 'Courier New', Courier, monospace;
+            margin-top: 10px;
+        }
+        .chatbox span {
+            color: #ffc107;
             font-weight: bold;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        button:hover {
-            background: #e0a800;
-        }
-
-        .hidden {
-            display: none;
-        }
-
-        .final {
-            text-align: center;
-        }
-
-        .final img {
-            max-width: 150px;
-            margin: 20px 0;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Greeting Section -->
-        <h1>Welcome to the Wizarding World Cryptic Hunt</h1>
-        <p class="parchment">Greetings, wizard! Your journey to solve mysteries in the magical realm begins now. Solve each puzzle to proceed to the next step. Be prepared for a magical challenge!</p>
-
-        <!-- Puzzle 1: Riddle -->
-        <div class="puzzle" id="riddlePuzzle">
-            <h2>Riddle</h2>
-            <p class="parchment">"I guard a certain stone, but I’m no beast. Instead, I’m often chained to a door. What am I?"</p>
-            <input type="text" id="riddleAnswer" placeholder="Your answer here">
-            <button onclick="checkRiddle()">Submit</button>
+    <div class="card">
+        <h1>Welcome to the Wizarding World Cryptic Hunt! 🪄</h1>
+        <p>Your journey begins here, brave wizard. Solve the riddles, crack the codes, and uncover the secrets of magic!</p>
+        <div class="chatbox">
+            <span>Hint:</span> "I'm where young witches and wizards convene,<br>Hidden in London, unseen and serene.<br>Through a solid wall, your journey you’ll mark,<br>Tell me the place to board to Hogwarts."
         </div>
-
-        <!-- Puzzle 2: Jigsaw Puzzle -->
-        <div class="puzzle hidden" id="jigsawPuzzle">
-            <h2>Jigsaw Puzzle</h2>
-            <p class="parchment">Rearrange the pieces to reveal the answer.</p>
-            <img src="https://i.imgur.com/L8rGAZ9.png" alt="Jigsaw Puzzle" id="jigsawImage">
-            <input type="text" id="jigsawAnswer" placeholder="Enter the image keyword">
-            <button onclick="checkJigsaw()">Submit</button>
-        </div>
-
-        <!-- Puzzle 3: Numeric Puzzle -->
-        <div class="puzzle hidden" id="numericPuzzle">
-            <h2>Numeric Puzzle</h2>
-            <p class="parchment">A broomstick flies at 80 mph. How long will it take to travel 240 miles?</p>
-            <input type="text" id="numericAnswer" placeholder="Your answer here">
-            <button onclick="checkNumeric()">Submit</button>
-        </div>
-
-        <!-- Puzzle 4: Caesar Cipher -->
-        <div class="puzzle hidden" id="cipherPuzzle">
-            <h2>Caesar Cipher</h2>
-            <p class="parchment">Decrypt this: <b>Gringotts Bank</b> (Shift letters backwards by 2).</p>
-            <input type="text" id="cipherAnswer" placeholder="Your answer here">
-            <button onclick="checkCipher()">Submit</button>
-        </div>
-
-        <!-- Final Congratulatory Message -->
-        <div class="puzzle hidden" id="congrats">
-            <div class="final">
-                <h2>Congratulations!</h2>
-                <img src="https://upload.wikimedia.org/wikipedia/en/8/86/HogwartsCastelWinter.jpg" alt="Hogwarts">
-                <p class="parchment">You’ve completed the first hunt, wizard! Prepare for your next magical challenge.</p>
-            </div>
-        </div>
+        <input type="text" id="answer" placeholder="Enter your answer">
+        <div id="error" class="error"></div>
+        <button onclick="checkAnswer()">Submit</button>
     </div>
 
     <script>
-        // Functions to check answers
-        function checkRiddle() {
-            const answer = document.getElementById('riddleAnswer').value.trim().toLowerCase();
-            if (answer === 'fluffy') {
-                document.getElementById('riddlePuzzle').classList.add('hidden');
-                document.getElementById('jigsawPuzzle').classList.remove('hidden');
-            } else {
-                alert('Incorrect! Try again.');
-            }
-        }
+        function checkAnswer() {
+            const answer = document.getElementById('answer').value.toLowerCase().replace(/\s+/g, '');
+            const errorDiv = document.getElementById('error');
 
-        function checkJigsaw() {
-            const answer = document.getElementById('jigsawAnswer').value.trim().toLowerCase();
-            if (answer === 'philosopher') {
-                document.getElementById('jigsawPuzzle').classList.add('hidden');
-                document.getElementById('numericPuzzle').classList.remove('hidden');
+            if (answer === 'platform9and3/4') {
+                window.location.href = 'https://CrypticHunt25.github.io/HUNT1/step2.html'; // Redirect to the next page
             } else {
-                alert('Incorrect! Try again.');
-            }
-        }
-
-        function checkNumeric() {
-            const answer = document.getElementById('numericAnswer').value.trim();
-            if (answer === '3') {
-                document.getElementById('numericPuzzle').classList.add('hidden');
-                document.getElementById('cipherPuzzle').classList.remove('hidden');
-            } else {
-                alert('Incorrect! Try again.');
-            }
-        }
-
-        function checkCipher() {
-            const answer = document.getElementById('cipherAnswer').value.trim().toLowerCase();
-            if (answer === 'ephhmfqr') {
-                document.getElementById('cipherPuzzle').classList.add('hidden');
-                document.getElementById('congrats').classList.remove('hidden');
-            } else {
-                alert('Incorrect! Try again.');
+                errorDiv.textContent = 'Incorrect answer! Please try again.';
             }
         }
     </script>
